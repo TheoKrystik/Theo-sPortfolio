@@ -27,4 +27,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+  portfolioItems.forEach(item => {
+    
+    const overlay = document.createElement('div');
+    overlay.classList.add('hover-overlay');
+    overlay.innerHTML = `
+      <p class="overlay-text">Click to Learn More</p>
+    `;
+    item.appendChild(overlay);
+
+    item.addEventListener('mouseenter', () => {
+      overlay.style.opacity = '1';
+    });
+
+    item.addEventListener('mouseleave', () => {
+      overlay.style.opacity = '0';
+    });
+    item.addEventListener('click', () => {
+      const title = item.querySelector('h3').textContent;
+      alert(`More about: ${title}`);
+    });
+  });
+});
+
+
 
